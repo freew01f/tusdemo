@@ -87,7 +87,7 @@ Upload-Offset: 100
 
 流程见下图，不解释了
 
-![tus](/Users/freewolf/Documents/Study/tus/tus.jpg)
+![tus](https://raw.githubusercontent.com/freew01f/tusdemo/master/tus.jpg)
 
 
 
@@ -110,6 +110,10 @@ Simple.html 是最简单的一个文件上传页面demo。
 tus需要本地浏览器中存储已经上传的文件信息，这些js-tus-client都已经实现。
 
 
+
+# Github地址
+
+https://github.com/freew01f/tusdemo
 
 
 ## 参考文献
