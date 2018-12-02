@@ -115,6 +115,8 @@ tus需要本地浏览器中存储已经上传的文件信息，这些js-tus-clie
 
 https://github.com/freew01f/tusdemo
 
+代码都在这里了，这里就不解释了，如果你想修改上传的endpoint地址，你需要在POST方法创建时修改，因为这个url会存在本地浏览器中。
+
 
 ## 参考文献
 
