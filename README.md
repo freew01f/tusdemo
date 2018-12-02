@@ -87,7 +87,7 @@ Upload-Offset: 100
 
 流程见下图，不解释了
 
-![tus](https://raw.githubusercontent.com/freew01f/tusdemo/master/tus.jpg)
+![tus](https://github.com/freew01f/tusdemo/raw/master/tus.jpg)
 
 
 
