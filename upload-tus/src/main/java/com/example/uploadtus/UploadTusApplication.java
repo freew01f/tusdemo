@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletResponse;
@@ -31,10 +30,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 
 @SpringBootApplication
@@ -204,7 +200,8 @@ class UploadController{
      */
     @RequestMapping(method = RequestMethod.POST)
     public RequestEntity<?> postRequest(@RequestHeader("Upload-Length") Integer uploadLength,
-                                 UriComponentsBuilder uriComponentsBuilder,
+                                        @RequestHeader("Upload-Metadata") String metadata,
+                                        UriComponentsBuilder uriComponentsBuilder,
                                  HttpServletResponse response){
         logger.debug("3 - POST START");
         logger.debug("Final-Length header value: " + Long.toString(uploadLength));
@@ -217,7 +214,11 @@ class UploadController{
             throw BaseException.FILE_BEYOUND_SIZE;
         }
 
+
+        byte[] nameByte = Base64.getDecoder().decode(metadata.split(",")[0].split(" ")[1]);
+
         UploadFile uploadFile = new UploadFile();
+        uploadFile.setFileName(new String(nameByte));
         uploadFile.setUploadSize(uploadLength);
         uploadFile.setOffset(0);
         uploadFile.setCompleted(false);

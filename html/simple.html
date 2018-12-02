@@ -11,8 +11,7 @@
     	var file = e.files[0]
 	    // Create a new tus upload
 	    var upload = new tus.Upload(file, {
-	        // endpoint: "http://localhost:8000/tus",
-	       	endpoint: "http://localhost:1005/api/tus",
+	        endpoint: "http://localhost:8000/tus",
 	        retryDelays: [0, 1000, 3000, 5000],
 	        chunkSize: 1*1024*1024, // 15MB
 	        metadata: {
