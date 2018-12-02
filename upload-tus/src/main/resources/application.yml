@@ -1,0 +1,6 @@
+server:
+  port: 8000
+
+tus:
+  max-size: 500000000
+  upload-path: "/Users/freewolf/tus/"

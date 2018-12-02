@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Upload</title>
+</head>
+<body>
+<input type="file" onchange="change(this)">
+<script src="./tus.js"></script>
+<script type="text/javascript">
+	function change(e){
+    	var file = e.files[0]
+	    // Create a new tus upload
+	    var upload = new tus.Upload(file, {
+	        // endpoint: "http://localhost:8000/tus",
+	       	endpoint: "http://localhost:1005/api/tus",
+	        retryDelays: [0, 1000, 3000, 5000],
+	        chunkSize: 1*1024*1024, // 15MB
+	        metadata: {
+	            filename: file.name,
+	            filetype: file.type
+	        },
+	        onError: function(error) {
+	            console.log("Failed because: " + error)
+	        },
+	        onProgress: function(bytesUploaded, bytesTotal) {
+	            var percentage = (bytesUploaded / bytesTotal * 100).toFixed(2)
+	            console.log(bytesUploaded, bytesTotal, percentage + "%")
+	        },
+	        onSuccess: function() {
+	            console.log("Download %s from %s", upload.file.name, upload.url)
+	        }
+	    })
+
+	    // Start the upload
+	    upload.start()
+   	}
+</script>
+</body>
+</html>
