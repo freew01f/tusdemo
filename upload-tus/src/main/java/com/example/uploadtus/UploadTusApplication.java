@@ -41,17 +41,6 @@ public class UploadTusApplication {
     }
 }
 
-@Configuration
-@EnableWebMvc
-class MvcConfig implements WebMvcConfigurer {
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**")
-                .addResourceLocations("/resources/static/");
-    }
-}
-
 /**
  * TUS HEADER所需环境变量
  */
